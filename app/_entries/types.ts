@@ -1,5 +1,5 @@
 export type SubmitButtonProps = {
-  innerText: string; // 文字列型のプロパティを受け取る
+  innerText: string;
 };
 
 export type FormProps = {

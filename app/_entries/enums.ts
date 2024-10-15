@@ -1,18 +1,18 @@
 export enum Status {
-  無効 = 0,
-  有効,
+  Disabled = 0,
+  Enabled,
 }
 
 export enum Division {
-  一般 = 0,
-  管理者,
+  General = 0,
+  Administrator,
 }
 
 export enum ItemContition {
-  正常 = 1,
-  破損,
-  貸出中,
-  修理中,
-  廃棄予定,
-  廃棄済,
+  Normal = 1,
+  Broken,
+  Lending,
+  BeingRepaired,
+  ToBeDisposed,
+  BeenDisposed,
 }

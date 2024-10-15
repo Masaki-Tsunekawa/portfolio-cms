@@ -5,11 +5,8 @@ import Footer from "@/app/_components/Footer";
 import SubmitButton from "@/app/_components/input/SubmitButton";
 import EmailInput from "@/app/_components/input/EmailInput";
 import Password from "@/app/_components/input/Password";
-import Table from "@/app/_components/table/Table";
-import ProductsTable from "@/app/_components/table/ProductsTable";
-import Tr from "@/app/_components/table/Tr";
-import Th from "@/app/_components/table/Th";
-import Td from "@/app/_components/table/Td";
+import ProductIndex from "@/app/_components/table/ProductIndex";
+import ProductDetail from "@/app/_components/table/ProductDetail";
 
 export {
   Form,
@@ -19,9 +16,6 @@ export {
   Header,
   Footer,
   SubmitButton,
-  Table,
-  ProductsTable,
-  Tr,
-  Th,
-  Td,
+  ProductIndex,
+  ProductDetail,
 };

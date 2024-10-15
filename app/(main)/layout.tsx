@@ -8,7 +8,9 @@ export default function MainLayout({
   return (
     <>
       <Header />
-      {children}
+      <div className="bg-background text-foreground font-sans p-8">
+        {children}
+      </div>
       <Footer />
     </>
   );
