@@ -16,7 +16,7 @@ import { ItemContition } from "@/app/_entries/enums";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { productSchema } from "@/app/_schemas/Products";
 
-export default function page() {
+export default function Page() {
   let isSubmitted = false;
   const {
     register,

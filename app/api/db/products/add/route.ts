@@ -46,7 +46,7 @@ export async function POST(request: Request) {
       new Date(),
       null,
     ]);
-    // console.log(product);
+    console.log(product);
 
     return NextResponse.json({ message: "success" }, { status: 200 });
   } catch (error) {
