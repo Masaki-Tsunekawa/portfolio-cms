@@ -1,9 +1,10 @@
 import React from "react";
+import { Tr, Th, Td } from "@chakra-ui/react";
 import { Product } from "@/app/_entries/interfaces";
+import { TableContent } from "@/app/_entries/components";
 import { ItemContition, Status } from "@/app/_entries/enums";
-import { Table, Tr, Th, Td, TableContainer } from "@chakra-ui/react";
 
-const ProductDetail: React.FC<Product> = ({
+const Detail: React.FC<Product> = ({
   name,
   quantity,
   item_condition,
@@ -11,8 +12,8 @@ const ProductDetail: React.FC<Product> = ({
   note,
 }) => {
   return (
-    <TableContainer>
-      <Table variant="simple">
+    <>
+      <TableContent>
         <Tr>
           <Th>Name</Th>
           <Td>{name}</Td>
@@ -33,9 +34,9 @@ const ProductDetail: React.FC<Product> = ({
           <Th>Note</Th>
           <Td>{note}</Td>
         </Tr>
-      </Table>
-    </TableContainer>
+      </TableContent>
+    </>
   );
 };
 
-export default ProductDetail;
+export default Detail;

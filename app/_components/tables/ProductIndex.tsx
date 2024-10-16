@@ -1,22 +1,15 @@
 import React from "react";
 import Link from "next/link";
-import { ProductsTableProps } from "@/app/_entries/types";
 import { Product } from "@/app/_entries/interfaces";
+import { TableContent } from "@/app/_entries/components";
+import { ProductsTableProps } from "@/app/_entries/types";
+import { Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import { ItemContition, Status } from "@/app/_entries/enums";
-import {
-  Table,
-  Thead,
-  Tbody,
-  Tr,
-  Th,
-  Td,
-  TableContainer,
-} from "@chakra-ui/react";
 
-const ProductIndex: React.FC<ProductsTableProps> = ({ rows }) => {
+const Index: React.FC<ProductsTableProps> = ({ rows }) => {
   return (
-    <TableContainer>
-      <Table variant="simple">
+    <>
+      <TableContent>
         <Thead>
           <Tr>
             <Th>Name</Th>
@@ -46,9 +39,9 @@ const ProductIndex: React.FC<ProductsTableProps> = ({ rows }) => {
             </Tr>
           ))}
         </Tbody>
-      </Table>
-    </TableContainer>
+      </TableContent>
+    </>
   );
 };
 
-export default ProductIndex;
+export default Index;

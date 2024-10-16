@@ -1,7 +1,5 @@
 import React from "react";
-import Link from "next/link";
-import { ProductDetail } from "@/app/_entries/components";
-import { Button } from "@chakra-ui/react";
+import { ProductDetail, Title, Delete, Edit } from "@/app/_entries/components";
 
 export default async function page({ params }: { params: { id: string } }) {
   const id = params.id;
@@ -19,17 +17,9 @@ export default async function page({ params }: { params: { id: string } }) {
 
   return (
     <>
-      <h1 className="text-4xl font-bold p-4">{product[0].name}</h1>
-      <Button colorScheme="blue">
-        <Link href={`http://localhost:3000/api/db/products/edit?id=${id}`}>
-          Edit
-        </Link>
-      </Button>
-      <Button colorScheme="red">
-        <Link href={`http://localhost:3000/api/db/products/delete?id=${id}`}>
-          Delte
-        </Link>
-      </Button>
+      <Title title={`Product: ${product[0].name}`} />
+      <Edit url={`http://localhost:3000/api/db/products/edit?id=${id}`} />
+      <Delete url={`http://localhost:3000/api/db/products/delete?id=${id}`} />
       <ProductDetail {...product[0]} />
     </>
   );

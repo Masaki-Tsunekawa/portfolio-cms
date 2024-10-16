@@ -1,7 +1,6 @@
 import React from "react";
-import Link from "next/link";
-import { ProductIndex } from "@/app/_entries/components";
-import { Button } from "@chakra-ui/react";
+import { Add, ProductIndex, Title } from "@/app/_entries/components";
+import { Search } from "@/app/_entries/components";
 
 export default async function page() {
   const data = await fetch("http://localhost:3000/api/db/products/index", {
@@ -14,7 +13,7 @@ export default async function page() {
 
   return (
     <>
-      <h1 className="text-4xl font-bold p-4">Products</h1>
+      <Title title="Products" />
       <div className="flex flex-col">
         <div className="w-full">
           <div className="shadow-md rounded p-4">
@@ -25,7 +24,6 @@ export default async function page() {
             >
               <legend className="text-lg font-semibold">Search</legend>
               <div className="flex items-center">
-                <label className="sr-only" htmlFor="keywords"></label>
                 <input
                   type="text"
                   id="keywords"
@@ -34,12 +32,8 @@ export default async function page() {
                   maxLength={30}
                 />
               </div>
-              <Button className="ml-2" colorScheme="blue">
-                Search
-              </Button>
-              <Button className="ml-2" colorScheme="blue">
-                <Link href="/products/add">Add Product</Link>
-              </Button>
+              <Search url="" />
+              <Add url="/products/add" />
             </div>
           </div>
           <div className="flex justify-center mt-4 mb-8">

@@ -1,7 +1,12 @@
 "use client";
 
 import React from "react";
-import LoginForm from "../../_components/form/LoginForm";
+import {
+  Form,
+  EmailInput,
+  Password,
+  SubmitButton,
+} from "@/app/_entries/components";
 
 export default function Login() {
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
@@ -43,8 +48,15 @@ export default function Login() {
   };
 
   return (
-    <main className="flex h-screen items-center justify-center">
-      <LoginForm onSubmit={handleLogin} />
-    </main>
+    <>
+      <div className="flex h-screen items-center justify-center login-form">
+        <h2>Login</h2>
+        <Form onSubmit={handleLogin}>
+          <EmailInput />
+          <Password />
+          <SubmitButton innerText="Login" isSubmitted={true} />
+        </Form>
+      </div>
+    </>
   );
 }
