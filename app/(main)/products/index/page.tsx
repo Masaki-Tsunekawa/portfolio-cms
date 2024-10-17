@@ -43,7 +43,11 @@ export default async function page() {
           <div className="flex justify-center mt-4 mb-8">
             <div className="w-full">
               <div className="table-responsive">
-                <ProductIndex rows={products.rows} />
+                <ProductIndex
+                  rows={products.rows}
+                  protocol={protocol}
+                  host={host || ""}
+                />
               </div>
             </div>
           </div>

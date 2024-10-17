@@ -5,13 +5,12 @@ import { TableContent } from "@/app/_entries/components";
 import { ProductsTableProps } from "@/app/_entries/types";
 import { Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import { ItemContition, Status } from "@/app/_entries/enums";
-import { headers } from "next/headers";
 
-const ProductIndex: React.FC<ProductsTableProps> = ({ rows }) => {
-  const currentHeaders = headers();
-  const host = currentHeaders.get("host");
-  const protocol = process.env.NEXT_PUBLIC_PROTOCOL || "http";
-
+const ProductIndex: React.FC<ProductsTableProps> = ({
+  rows,
+  host,
+  protocol,
+}: Readonly<{ rows: Product[]; host: string; protocol: string }>) => {
   return (
     <>
       <TableContent>

@@ -11,6 +11,8 @@ export type TableProps = {
 import { Product } from "@/app/_entries/interfaces";
 export type ProductsTableProps = {
   rows: Product[];
+  host: string;
+  protocol: string;
 };
 
 export type LoginFormProps = {

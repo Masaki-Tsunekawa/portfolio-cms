@@ -1,4 +1,5 @@
-import Form from "@/app/_components/Form";
+import Form from "@/app/_components/forms/Form";
+import ProductForm from "@/app/_components/forms/ProductForm";
 import Header from "@/app/_components/Header";
 import Footer from "@/app/_components/Footer";
 import Title from "@/app/_components/Title";
@@ -21,6 +22,7 @@ import Search from "@/app/_components/buttons/Search";
 
 export {
   Form,
+  ProductForm,
   EmailInput,
   Password,
   Header,
