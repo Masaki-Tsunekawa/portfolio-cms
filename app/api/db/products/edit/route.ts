@@ -1,7 +1,7 @@
 import mysql from "mysql2/promise";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
   const connection = await mysql.createConnection({
     host: process.env.DATABASE_HOST,
     user: process.env.DATABASE_USER,
@@ -9,9 +9,10 @@ export async function GET(request: Request) {
     database: process.env.DATABASE_NAME,
     port: parseInt(process.env.DATABASE_PORT || "3306", 10),
   });
+  const searchParams = request.nextUrl.searchParams;
 
   try {
-    const id = request.url.split("?id=")[1]; // get query parameter from the URL
+    const id = searchParams.get("id"); // get query parameter from the URL
     const query = "SELECT * FROM products WHERE id = ? LIMIT 1";
     const [product] = await connection.query(query, [id]);
     // console.log(product);

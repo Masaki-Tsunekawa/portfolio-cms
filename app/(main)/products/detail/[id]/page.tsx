@@ -1,10 +1,14 @@
 import React from "react";
+import { headers } from "next/headers";
 import { ProductDetail, Title, Delete, Edit } from "@/app/_entries/components";
 
-export default async function page({ params }: { params: { id: string } }) {
+export default async function Page({ params }: { params: { id: string } }) {
+  const currentHeaders = headers();
+  const host = currentHeaders.get("host");
+  const protocol = process.env.NEXT_PUBLIC_PROTOCOL || "http";
   const id = params.id;
   const data = await fetch(
-    `http://localhost:3000/api/db/products/detail?id=${id}`,
+    `${protocol}://${host}/api/db/products/detail?id=${id}`,
     {
       headers: {
         "Content-Type": "application/json",
@@ -18,8 +22,8 @@ export default async function page({ params }: { params: { id: string } }) {
   return (
     <>
       <Title title={`Product: ${product[0].name}`} />
-      <Edit url={`http://localhost:3000/api/db/products/edit?id=${id}`} />
-      <Delete url={`http://localhost:3000/api/db/products/delete?id=${id}`} />
+      <Edit url={`${protocol}://${host}/api/db/products/edit?id=${id}`} />
+      <Delete url={`${protocol}://${host}/api/db/products/delete?id=${id}`} />
       <ProductDetail {...product[0]} />
     </>
   );

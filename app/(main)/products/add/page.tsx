@@ -15,6 +15,7 @@ import {
 import { ItemContition } from "@/app/_entries/enums";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { productSchema } from "@/app/_schemas/Products";
+import { headers } from "next/headers";
 
 export default function Page() {
   let isSubmitted = false;
@@ -23,12 +24,15 @@ export default function Page() {
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: zodResolver(productSchema) });
+  const currentHeaders = headers();
+  const host = currentHeaders.get("host");
+  const protocol = process.env.NEXT_PUBLIC_PROTOCOL || "http";
 
   const onSubmit = async (data: FieldValues) => {
     isSubmitted = true;
     // console.log(data);
 
-    await fetch("http://localhost:3000/api/db/products/add", {
+    await fetch(`${protocol}://${host}/api/db/products/add`, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -42,7 +46,7 @@ export default function Page() {
         if (res.errors) {
           console.log(res.errors);
         } else {
-          window.location.href = "http://localhost:3000/products/add";
+          window.location.href = `${protocol}://${host}/products/add`;
         }
       })
       .catch((e) => {

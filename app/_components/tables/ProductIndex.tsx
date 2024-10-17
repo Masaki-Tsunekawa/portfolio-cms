@@ -5,8 +5,13 @@ import { TableContent } from "@/app/_entries/components";
 import { ProductsTableProps } from "@/app/_entries/types";
 import { Thead, Tbody, Tr, Th, Td } from "@chakra-ui/react";
 import { ItemContition, Status } from "@/app/_entries/enums";
+import { headers } from "next/headers";
 
-const Index: React.FC<ProductsTableProps> = ({ rows }) => {
+const ProductIndex: React.FC<ProductsTableProps> = ({ rows }) => {
+  const currentHeaders = headers();
+  const host = currentHeaders.get("host");
+  const protocol = process.env.NEXT_PUBLIC_PROTOCOL || "http";
+
   return (
     <>
       <TableContent>
@@ -30,7 +35,7 @@ const Index: React.FC<ProductsTableProps> = ({ rows }) => {
               <Td>{row.note}</Td>
               <Td isNumeric>
                 <Link
-                  href={`http://localhost:3000/products/detail/${row.id}`}
+                  href={`${protocol}://${host}/products/detail/${row.id}`}
                   className="text-sky-500 hover:underline"
                 >
                   Detail
@@ -44,4 +49,4 @@ const Index: React.FC<ProductsTableProps> = ({ rows }) => {
   );
 };
 
-export default Index;
+export default ProductIndex;
