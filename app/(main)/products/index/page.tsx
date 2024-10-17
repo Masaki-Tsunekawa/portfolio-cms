@@ -1,9 +1,13 @@
 import React from "react";
-import { Add, ProductIndex, Title } from "@/app/_entries/components";
+import { headers } from "next/headers";
 import { Search } from "@/app/_entries/components";
+import { Add, ProductIndex, Title } from "@/app/_entries/components";
 
 export default async function page() {
-  const data = await fetch("http://localhost:3000/api/db/products/index", {
+  const currentHeaders = headers();
+  const host = currentHeaders.get("host");
+  const protocol = process.env.NEXT_PUBLIC_PROTOCOL || "http";
+  const data = await fetch(`${protocol}://${host}/api/db/products/index`, {
     headers: {
       "Content-Type": "application/json",
     },
